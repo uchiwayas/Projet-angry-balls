@@ -20,7 +20,7 @@ VueBillard vueBillard;    // la vue responsable du dessin des billes
 private Thread thread;    // pour lancer et arrêter les billes
 
 
-
+private static final double COEFF = 0.5;
 
 /**
  * @param billes
