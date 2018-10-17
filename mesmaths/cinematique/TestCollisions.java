@@ -40,7 +40,7 @@ double coeffFrottement = 1;
 double[] vitesses = {2,2,w1[0], -2, 2, w2[0]}; // vitesses contient, dans l'ordre, v1N', v1T', w1', v2N', v2T', w2'
 
 System.out.println("vitesses avant le choc : " + Arrays.toString(vitesses));
-Collisions.actionReactionBilleBilleAvecEffet(vitesses, rayon1, masse1, J1, rayon2, masse2, J2, G1G2, coeffFrottement);
+//Collisions.actionReactionBilleBilleAvecEffet(vitesses, rayon1, masse1, J1, rayon2, masse2, J2, G1G2, coeffFrottement);
 
 System.out.println("vitesses après le choc : " + Arrays.toString(vitesses));
 
