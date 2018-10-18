@@ -26,7 +26,7 @@ public class TestAngryBalls
  */
 public static void main(String[] args)
 {
-//------------------- création de la liste (pour l'instant vide) des billes -----------------------
+//------------------- création de la liste (pour l'instant vide) des billes cc owo -----------------------
 
 Vector<Bille> billes = new Vector<Bille>();
 
