@@ -90,7 +90,9 @@ public class Bille extends ObjetMouvant {
 	public double masse() {
 		return ro * Geop.volumeSphère(rayon);
 	}
-
+	
+	
+ 
 	/**
 	 * mise à jour de position et vitesse à t+deltaT à partir de position et
 	 * vitesse à l'instant t
