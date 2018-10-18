@@ -49,7 +49,7 @@ try
         //deltaT = COEFF*minRayons2/(1+maxVitessesCarrées(billes));       // mise à jour deltaT. L'addition + 1 est une astuce pour éviter les divisions par zéro
         
                                                                         //System.err.println("deltaT = " + deltaT);
-        deltaT = 10;
+        deltaT = 1;
         
         int i;
         for ( i = 0; i < billes.size(); ++i)    // mise à jour de la liste des billes
