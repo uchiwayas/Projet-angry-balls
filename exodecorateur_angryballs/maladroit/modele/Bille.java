@@ -15,10 +15,14 @@ import mesmaths.geometrie.base.Vecteur;
  * 
  * 
  */
-public class Bille extends ObjetMouvant {
+public abstract class Bille extends Objet{
 	// ----------------- classe Bille-------------------------------------
 
+	public Vecteur position; // centre de la bille
 	public double rayon; // rayon > 0
+	public Vecteur vitesse;
+	public Vecteur accélération;
+	public int clef; // identifiant unique de cette bille
 
 	private Color couleur;
 
@@ -90,7 +94,7 @@ public class Bille extends ObjetMouvant {
 	public double masse() {
 		return ro * Geop.volumeSphère(rayon);
 	}
- 
+
 	/**
 	 * mise à jour de position et vitesse à t+deltaT à partir de position et
 	 * vitesse à l'instant t
@@ -114,7 +118,7 @@ public class Bille extends ObjetMouvant {
 	 * définie dans les classes dérivées A ce niveau le vecteur accélération est
 	 * mis à zéro (c'est à dire pas d'accélération)
 	 */
-	public void gestionAccélération(Vector<Bille> billes) {
+	public void gestionAccélération(Vector<Objet> billes) {
 		this.getAccélération().set(Vecteur.VECTEURNUL);
 	}
 
@@ -131,9 +135,24 @@ public class Bille extends ObjetMouvant {
 	 *         renvoie false, il n'y a pas de collision et les billes sont
 	 *         laissées intactes
 	 */
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return OutilsObjet.gestionCollisionBilleBille(this, billes);
+	public boolean gestionCollisionBilleBille(Vector<Objet> billes) {
+		return OutilsObjet.gestionCollisionObjetObjet(this, billes);
 	}
+
+	/**
+	 * gestion de l'éventuelle collision de la bille (this) avec le contour
+	 * rectangulaire de l'écran défini par (abscisseCoinHautGauche,
+	 * ordonnéeCoinHautGauche, largeur, hauteur)
+	 * 
+	 * détecte si il y a collision et le cas échéant met à jour position et
+	 * vitesse
+	 * 
+	 * La nature du comportement de la bille en réponse à cette collision est
+	 * définie dans les classes dérivées
+	 */
+	
+	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
+			double hauteur);
 
 	public void dessine(Graphics g) {
 		int width, height;
@@ -153,19 +172,6 @@ public class Bille extends ObjetMouvant {
 	public String toString() {
 		return "centre = " + position + " rayon = " + rayon + " vitesse = " + vitesse + " accélération = "
 				+ accélération + " couleur = " + couleur + "clef = " + clef;
-	}
-
-	@Override
-	public void deplacer() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
-			double hauteur) {
-		// TODO Auto-generated method stub
-
 	}
 
 	// ----------------- classe Bille -------------------------------------

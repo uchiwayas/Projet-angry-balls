@@ -29,26 +29,11 @@ public class BilleMvtNewtonFrottementRebond extends Bille {
 	 * decorateur_angryballs.modele.Bille#gestionAccélération(java.util.Vector)
 	 */
 	@Override
-	public void gestionAccélération(Vector<Bille> billes) {
-		super.gestionAccélération(billes); // remise à zéro du vecteur
+	public void gestionAccélération1(Vector<Bille> billes) {
+		super.gestionAccélération1(billes); // remise à zéro du vecteur
 											// accélération
-		this.getAccélération().ajoute(OutilsObjet.gestionAccélérationNewton(this, billes)); // contribution
-																							// de
-																							// l'accélération
-																							// due
-																							// à
-																							// l'attraction
-																							// des
-																							// autres
-																							// billes
-		this.getAccélération().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse())); // contribution
-																											// de
-																											// l'accélération
-																											// due
-																											// au
-																											// frottement
-																											// dans
-																											// l'air
+		this.getAccélération().ajoute(OutilsObjet.gestionAccélérationNewton(this, billes)); // contribution de l'accélération due à l'attraction des autres billes
+		this.getAccélération().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse())); // contribution de l'accélération due au frottement dans l'air
 	}
 
 	@Override

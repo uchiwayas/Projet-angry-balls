@@ -56,7 +56,7 @@ try
             {
             billeCourante = billes.get(i);
             billeCourante.déplacer(deltaT);                 // mise à jour position et vitesse de cette bille
-            billeCourante.gestionAccélération(billes);      // calcul de l'accélération subie par cette bille
+            billeCourante.gestionAccélération1(billes);      // calcul de l'accélération subie par cette bille
             billeCourante.gestionCollisionBilleBille(billes);
             billeCourante.collisionContour( 0, 0, vueBillard.largeurBillard(), vueBillard.hauteurBillard());        //System.err.println("billes = " + billes);
             }
