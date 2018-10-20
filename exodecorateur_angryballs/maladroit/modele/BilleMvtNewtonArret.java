@@ -32,7 +32,7 @@ public class BilleMvtNewtonArret extends Bille {
 	public void gestionAccélération(Vector<Bille> billes) {
 		super.gestionAccélération(billes); // remise à zéro du vecteur
 											// accélération
-		this.getAccélération().ajoute(OutilsBille.gestionAccélérationNewton(this, billes)); // contribution
+		this.getAccélération().ajoute(OutilsObjet.gestionAccélérationNewton(this, billes)); // contribution
 																							// de
 																							// l'accélération
 																							// due

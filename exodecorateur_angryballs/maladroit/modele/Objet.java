@@ -1,5 +1,7 @@
 package exodecorateur_angryballs.maladroit.modele;
 
+import mesmaths.geometrie.base.Vecteur;
+
 public abstract class Objet {
 	
 	public abstract void deplacer();
@@ -13,4 +15,9 @@ public abstract class Objet {
 	 * */
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur);
 	
+	public abstract int getClef();
+	public abstract Vecteur getPosition();
+	public abstract int getRayon();
+	public abstract Vecteur getVitesse();
+	public abstract int masse();
 }

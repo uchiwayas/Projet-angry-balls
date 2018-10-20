@@ -132,7 +132,7 @@ public class Bille extends ObjetMouvant {
 	 *         laissées intactes
 	 */
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return OutilsBille.gestionCollisionBilleBille(this, billes);
+		return OutilsObjet.gestionCollisionBilleBille(this, billes);
 	}
 
 	public void dessine(Graphics g) {
