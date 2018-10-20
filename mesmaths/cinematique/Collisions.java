@@ -201,7 +201,7 @@ return true;
  * 
  * 
  * */
-public static boolean collisionBilleContourAvecRebond( final Vecteur position,  double rayon, Vecteur vitesse, 
+public static boolean collisionObjetContourAvecRebond( final Vecteur position,  double rayon, Vecteur vitesse, 
         double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur)
 {
 Vecteur min = new Vecteur(abscisseCoinHautGauche,ordonnéeCoinHautGauche);

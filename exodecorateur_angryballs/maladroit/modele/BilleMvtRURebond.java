@@ -24,7 +24,7 @@ public class BilleMvtRURebond extends Bille {
 	@Override
 	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
 			double hauteur) {
-		Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(),
+		Collisions.collisionObjetContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(),
 				abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
 
 	}

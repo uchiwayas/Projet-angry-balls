@@ -44,4 +44,8 @@ public abstract class ObjetAvecEffet extends Objet {
 	public void gestionAccélération(Vector<Objet> objets) {
 		this.getAccélération().set(Vecteur.VECTEURNUL);
 	}
+	
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
+			double hauteur) {
+	}
 }

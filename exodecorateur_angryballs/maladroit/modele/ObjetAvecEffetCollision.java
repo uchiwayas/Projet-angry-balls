@@ -1,8 +1,8 @@
 package exodecorateur_angryballs.maladroit.modele;
 
-public abstract class ObjetAvecEffetUniqueCollision extends ObjetAvecEffet {
+public abstract class ObjetAvecEffetCollision extends ObjetAvecEffet {
 	
-	public ObjetAvecEffetUniqueCollision(ObjetAvecEffet o) {
+	public ObjetAvecEffetCollision(ObjetAvecEffet o) {
 		super(o);
 	}
 
