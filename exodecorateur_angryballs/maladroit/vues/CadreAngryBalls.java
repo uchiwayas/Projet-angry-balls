@@ -4,8 +4,7 @@ import java.awt.*;
 import java.util.Vector;
 
 import exodecorateur_angryballs.maladroit.modele.Bille;
-
-
+import exodecorateur_angryballs.maladroit.modele.Objet;
 import outilsvues.EcouteurTerminaison;
 
 import outilsvues.Outils;
@@ -26,7 +25,7 @@ Panel haut, centre, bas;
 
 EcouteurTerminaison ecouteurTerminaison;
 
-public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException
+public CadreAngryBalls(String titre, String message, Vector<Objet> billes) throws HeadlessException
 {
 super(titre);
 Outils.place(this, 0.33, 0.33, 0.5, 0.5);

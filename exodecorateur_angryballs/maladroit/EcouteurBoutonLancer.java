@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
  *  */
 public class EcouteurBoutonLancer implements ActionListener
 {
-AnimationBilles animationBilles;
+AnimationObjets animationBilles;
 
 
 
 /**
  * @param animationsBilles
  */
-public EcouteurBoutonLancer(AnimationBilles animationBilles)
+public EcouteurBoutonLancer(AnimationObjets animationBilles)
 {
 this.animationBilles = animationBilles;
 }

@@ -1,6 +1,6 @@
 package exodecorateur_angryballs.maladroit.modele;
 
-import java.util.Vector;
+import java.awt.Graphics;
 
 import mesmaths.geometrie.base.Vecteur;
 
@@ -41,11 +41,19 @@ public abstract class ObjetAvecEffet extends Objet {
 		return ObjetOriginal.getAccélération();
 	}
 	
-	public void gestionAccélération(Vector<Objet> objets) {
-		this.getAccélération().set(Vecteur.VECTEURNUL);
+	@Override
+	public void déplacer(double deltaT) {
+		ObjetOriginal.déplacer(deltaT);
 	}
 	
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
-			double hauteur) {
+	@Override
+	public void collisionContour(int i, int j, double largeurBillard, double hauteurBillard) {
+		ObjetOriginal.collisionContour(i, j, largeurBillard, hauteurBillard);
 	}
+	
+	@Override
+	public void dessine(Graphics graphics) {
+		ObjetOriginal.dessine(graphics);
+	}
+	
 }

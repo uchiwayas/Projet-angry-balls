@@ -7,6 +7,7 @@ import java.util.Vector;
 import mesmaths.geometrie.base.Vecteur;
 import exodecorateur_angryballs.maladroit.modele.Bille;
 import exodecorateur_angryballs.maladroit.modele.BilleMvtRUPasseMurailles;
+import exodecorateur_angryballs.maladroit.modele.Objet;
 import exodecorateur_angryballs.maladroit.vues.VueBillard;
 
 public class TestAnimationBilles
@@ -18,7 +19,7 @@ public class TestAnimationBilles
  */
 public static void main(String[] args) throws IOException
 {
-Vector<Bille> billes = new Vector<Bille>();
+Vector<Objet> billes = new Vector<Objet>();
 
 Vecteur centreBille1 = new Vecteur(110,70);
 double rayonBille1 = 12;
@@ -33,15 +34,15 @@ Bille bille2 = new BilleMvtRUPasseMurailles(centreBille2, rayonBille2, vitesseBi
 billes.add(bille2);
 
 
-double vmax2 = AnimationBilles.maxVitessesCarrées(billes);
-double rayonmin2 = AnimationBilles.minRayons(billes);
+double vmax2 = AnimationObjets.maxVitessesCarrées(billes);
+double rayonmin2 = AnimationObjets.minRayons(billes);
 
 System.out.println("vmax2 = " + vmax2 + "rayonMin2 = " + rayonmin2);
 int c = System.in.read();
 
 VueBillard vueBillardFactice = new VueBillardFactice();
 
-AnimationBilles animation = new AnimationBilles(billes, vueBillardFactice);
+AnimationObjets animation = new AnimationObjets(billes, vueBillardFactice);
 animation.lancerAnimation();
 }
 

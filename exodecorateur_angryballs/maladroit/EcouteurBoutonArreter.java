@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
 
 public class EcouteurBoutonArreter implements ActionListener
 {
-AnimationBilles animationBilles;
+AnimationObjets animationBilles;
 
-public EcouteurBoutonArreter(AnimationBilles animationBilles)
+public EcouteurBoutonArreter(AnimationObjets animationBilles)
     {
     this.animationBilles = animationBilles;
     }

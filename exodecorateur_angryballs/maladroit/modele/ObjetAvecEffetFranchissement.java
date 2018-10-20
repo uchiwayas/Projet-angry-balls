@@ -9,7 +9,7 @@ public class ObjetAvecEffetFranchissement extends ObjetAvecEffetCollision {
 	}
 
 	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
+	public void collisionContour(int abscisseCoinHautGauche, int ordonnéeCoinHautGauche, double largeur,
 			double hauteur) {
 		Collisions.collisionBilleContourPasseMuraille(this.getPosition(), abscisseCoinHautGauche,
 				ordonnéeCoinHautGauche, largeur, hauteur);

@@ -244,7 +244,7 @@ return false;
  * 
  * si retourne true, modifie les vecteurs vitesse v1 et v2
  */
-public static boolean CollisionBilleBille( final Vecteur G1, double rayon1, Vecteur v1, double m1, 
+public static boolean CollisionObjetObjet( final Vecteur G1, double rayon1, Vecteur v1, double m1, 
                                            final Vecteur G2, double rayon2, Vecteur v2, double m2)   
 //modifie b1 et b2
 //données : b1 et b2 avant le choc

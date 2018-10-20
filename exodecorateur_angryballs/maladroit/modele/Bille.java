@@ -15,15 +15,10 @@ import mesmaths.geometrie.base.Vecteur;
  * 
  * 
  */
-public abstract class Bille extends Objet{
+public class Bille extends ObjetMouvant{
 	// ----------------- classe Bille-------------------------------------
 
-	public Vecteur position; // centre de la bille
 	public double rayon; // rayon > 0
-	public Vecteur vitesse;
-	public Vecteur accélération;
-	public int clef; // identifiant unique de cette bille
-
 	private Color couleur;
 
 	private static int prochaineClef = 0;
@@ -118,25 +113,8 @@ public abstract class Bille extends Objet{
 	 * définie dans les classes dérivées A ce niveau le vecteur accélération est
 	 * mis à zéro (c'est à dire pas d'accélération)
 	 */
-	public void gestionAccélération(Vector<Objet> billes) {
+	public void gestionAccélération(Vector<Objet> objets) {
 		this.getAccélération().set(Vecteur.VECTEURNUL);
-	}
-
-	/**
-	 * gestion de l'éventuelle collision de cette bille avec les autres billes
-	 *
-	 * billes est la liste de toutes les billes en mouvement
-	 * 
-	 * Le comportement par défaut est le choc parfaitement élastique (c-à-d
-	 * rebond sans amortissement)
-	 * 
-	 * @return true si il y a collision et dans ce cas les positions et vecteurs
-	 *         vitesses des 2 billes impliquées dans le choc sont modifiées si
-	 *         renvoie false, il n'y a pas de collision et les billes sont
-	 *         laissées intactes
-	 */
-	public boolean gestionCollisionBilleBille(Vector<Objet> billes) {
-		return OutilsObjet.gestionCollisionObjetObjet(this, billes);
 	}
 
 	/**
@@ -150,9 +128,7 @@ public abstract class Bille extends Objet{
 	 * La nature du comportement de la bille en réponse à cette collision est
 	 * définie dans les classes dérivées
 	 */
-	
-	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
-			double hauteur);
+	public void collisionContour(int abscisseCoinHautGauche, int ordonnéeCoinHautGauche, double largeur, double hauteur){}
 
 	public void dessine(Graphics g) {
 		int width, height;
@@ -173,6 +149,7 @@ public abstract class Bille extends Objet{
 		return "centre = " + position + " rayon = " + rayon + " vitesse = " + vitesse + " accélération = "
 				+ accélération + " couleur = " + couleur + "clef = " + clef;
 	}
+
 
 	// ----------------- classe Bille -------------------------------------
 }
