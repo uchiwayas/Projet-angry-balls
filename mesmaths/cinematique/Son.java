@@ -13,7 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Son {
 	public static void sonCollision(double a){
 		try {
-			File file = new File("C:/Users/Yassine/Desktop/DesignPatternProject/SonChoc.wav");
+			File file = new File("Sons/SonChoc.wav");
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
 			
 			Clip clip = AudioSystem.getClip();
@@ -26,6 +26,8 @@ public class Son {
 			if(a>0.01) //petit bricolage pour arreter le son si deux billes spawn l'une dans l'autre
 				clip.start();
 			System.out.println(a);
+			
+			
 			
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
