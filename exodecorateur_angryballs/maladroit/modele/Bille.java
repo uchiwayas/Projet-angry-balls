@@ -114,7 +114,7 @@ public class Bille extends ObjetMouvant{
 	 * mis à zéro (c'est à dire pas d'accélération)
 	 */
 	public void gestionAccélération(Vector<Objet> objets) {
-		this.getAccélération().set(Vecteur.VECTEURNUL);
+		this.getAccélération().set(Vecteur.VECTEURNUL); //mise à zéro du vecteur a
 	}
 
 	/**

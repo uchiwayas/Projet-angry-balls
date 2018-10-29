@@ -25,8 +25,6 @@ public class Son {
 	        	volume.setValue((float) (-(1-a)*40));
 			if(a>0.01) //petit bricolage pour arreter le son si deux billes spawn l'une dans l'autre
 				clip.start();
-			System.out.println(a);
-			
 			
 			
 		} catch (UnsupportedAudioFileException e) {
