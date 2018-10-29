@@ -128,4 +128,5 @@ public class OutilsObjet {
 
 		return MecaniquePoint.champGravitéGlobal(cetObjet.getPosition(), masses, C);
 	}
+	
 }

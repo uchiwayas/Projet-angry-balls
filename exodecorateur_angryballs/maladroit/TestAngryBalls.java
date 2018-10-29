@@ -4,14 +4,10 @@ import java.awt.Color;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
-
+import mesmaths.mecanique.SourisListener;
 import exodecorateur_angryballs.maladroit.modele.Bille;
-import exodecorateur_angryballs.maladroit.modele.BilleMvtNewtonArret;
-import exodecorateur_angryballs.maladroit.modele.BilleMvtNewtonFrottementRebond;
-import exodecorateur_angryballs.maladroit.modele.BilleMvtRUPasseMurailles;
 import exodecorateur_angryballs.maladroit.modele.Objet;
 import exodecorateur_angryballs.maladroit.modele.*;
-import exodecorateur_angryballs.maladroit.modele.BilleMvtPesanteurFrottementRebond;
 import exodecorateur_angryballs.maladroit.vues.CadreAngryBalls;
 
 /**
@@ -37,6 +33,8 @@ public class TestAngryBalls {
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements différents. Situation idéale pour mettre en place le DP Decorator",
 				billes);
+		SourisListener s = new SourisListener();
+		cadre.addMouseListener(s);
 
 		cadre.montrer(); // on rend visible la vue
 

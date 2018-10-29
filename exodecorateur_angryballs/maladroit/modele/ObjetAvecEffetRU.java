@@ -9,5 +9,5 @@ public class ObjetAvecEffetRU extends ObjetAvecEffetAcceleration {
 	}
 
 	@Override
-	public void gestionAccélération(Vector<Objet> objets) {}
+	public void gestionAccélération(Vector<Objet> objets) {ObjetOriginal.gestionAccélération(objets);}
 }
