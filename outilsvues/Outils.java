@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 
+import javax.swing.JFrame;
+
 /**
  * Quelques outils pratiques dans des applis GUI
  * */
@@ -21,7 +23,7 @@ public class Outils
  * Les paramètres Ox, Oy, largeur et hauteur sont supposés être dans l'intervalle [0,1] !!!
  * 
  * */
-public static void place(Frame frame, double Ox, double Oy, double largeur, double hauteur)
+public static void place(JFrame frame, double Ox, double Oy, double largeur, double hauteur)
 {
 Toolkit toolkit = Toolkit.getDefaultToolkit();
 

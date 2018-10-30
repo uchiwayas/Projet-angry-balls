@@ -3,7 +3,11 @@ package exodecorateur_angryballs.maladroit.vues;
 import java.awt.*;
 import java.util.Vector;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import exodecorateur_angryballs.maladroit.modele.Objet;
+import mesmaths.mecanique.MecaniqueDragAndDropListener;
 import outilsvues.EcouteurTerminaison;
 
 import outilsvues.Outils;
@@ -16,36 +20,43 @@ import outilsvues.Outils;
  * 
  * 
  */
-public class CadreAngryBalls extends Frame implements VueBillard {
+public class CadreAngryBalls extends JFrame implements VueBillard {
 	TextField présentation;
 	Billard billard;
 	public Button lancerBilles, arrêterBilles;
-	Panel haut, centre, bas;
+	JPanel haut;
+	JPanel centre;
+	JPanel bas;
 
 	EcouteurTerminaison ecouteurTerminaison;
 	
 	public CadreAngryBalls(String titre, String message, Vector<Objet> billes) throws HeadlessException {
 		super(titre);
+		
+		MecaniqueDragAndDropListener s = new MecaniqueDragAndDropListener();
+		
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
 		this.ecouteurTerminaison = new EcouteurTerminaison(this);
 
-		this.haut = new Panel();
+		this.haut = new JPanel();
 		this.haut.setBackground(Color.LIGHT_GRAY);
 		this.add(this.haut, BorderLayout.NORTH);
 
-		this.centre = new Panel();
+		this.centre = new JPanel();
 		this.add(this.centre, BorderLayout.CENTER);
 
-		this.bas = new Panel();
+		this.bas = new JPanel();
 		this.bas.setBackground(Color.LIGHT_GRAY);
 		this.add(this.bas, BorderLayout.SOUTH);
 
 		this.présentation = new TextField(message, 100);
 		this.présentation.setEditable(false);
 		this.haut.add(this.présentation);
+		
 
 		this.billard = new Billard(billes);
 		this.add(this.billard);
+		this.billard.addMouseListener(s);
 
 		this.lancerBilles = new Button("lancer les billes");
 		this.bas.add(this.lancerBilles);
@@ -65,6 +76,10 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 	@Override
 	public void miseAJour() {
 		this.billard.repaint();
+	}
+	
+	public Billard getBillard(){
+		return this.billard;
 	}
 
 	/*

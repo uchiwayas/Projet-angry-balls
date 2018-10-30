@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
-import mesmaths.mecanique.SourisListener;
 import exodecorateur_angryballs.maladroit.modele.Bille;
 import exodecorateur_angryballs.maladroit.modele.Objet;
 import exodecorateur_angryballs.maladroit.modele.*;
@@ -33,9 +32,7 @@ public class TestAngryBalls {
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements différents. Situation idéale pour mettre en place le DP Decorator",
 				billes);
-		SourisListener s = new SourisListener();
-		cadre.addMouseListener(s);
-
+		
 		cadre.montrer(); // on rend visible la vue
 
 		// ------------- remplissage de la liste avec 4 billes
@@ -80,11 +77,21 @@ public class TestAngryBalls {
 		// --------------- ici commence la partie à changer
 		// ---------------------------------
 
-		billes.add(new ObjetAvecEffetRebond(new ObjetAvecEffetRU(new Bille(p0, rayon, v0, Color.red)))); //RU et rebond
-		billes.add(new ObjetAvecEffetFrottementVisqueux(new ObjetAvecEffetRebond(new ObjetAvecEffetPesanteur(new Bille(p1, rayon, v1, Color.yellow), new Vecteur(0, 0.001))))); //Pesanteur, rebond, frottement
-		billes.add(new ObjetAvecEffetFrottementVisqueux(new ObjetAvecEffetRebond(new ObjetAvecEffetNewton(new Bille(p2, rayon, v2, Color.green))))); //Newton, frottement, rebond
-		billes.add(new ObjetAvecEffetFranchissement(new ObjetAvecEffetRU(new Bille(p3, rayon, v3, Color.cyan)))); //RU et passe murailles
-		billes.add(new ObjetAvecEffetBloque(new ObjetAvecEffetNewton(new Bille(p4, rayon, v4, Color.black)))); //Newton et Arret
+		billes.add(new ObjetAvecEffetDragAndDrop(cadre,
+				new ObjetAvecEffetRebond(new ObjetAvecEffetRU(new Bille(p0, rayon, v0, Color.red))))); // RU
+																										// et
+																										// rebond
+		// billes.add(new ObjetAvecEffetFrottementVisqueux(new
+		// ObjetAvecEffetRebond(new ObjetAvecEffetPesanteur(new Bille(p1, rayon,
+		// v1, Color.yellow), new Vecteur(0, 0.001))))); //Pesanteur, rebond,
+		// frottement
+		// billes.add(new ObjetAvecEffetFrottementVisqueux(new
+		// ObjetAvecEffetRebond(new ObjetAvecEffetNewton(new Bille(p2, rayon,
+		// v2, Color.green))))); //Newton, frottement, rebond
+		// billes.add(new ObjetAvecEffetFranchissement(new ObjetAvecEffetRU(new
+		// Bille(p3, rayon, v3, Color.cyan)))); //RU et passe murailles
+		// billes.add(new ObjetAvecEffetBloque(new ObjetAvecEffetNewton(new
+		// Bille(p4, rayon, v4, Color.black)))); //Newton et Arret
 
 		// ---------------------- ici finit la partie à changer
 		// -------------------------------------------------------------

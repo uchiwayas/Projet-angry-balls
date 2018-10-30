@@ -4,12 +4,16 @@ import java.awt.Window;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JFrame;
+
+import exodecorateur_angryballs.maladroit.vues.CadreAngryBalls;
+
 public class EcouteurTerminaison implements WindowListener
 {
 
-public EcouteurTerminaison(Window window)
+public EcouteurTerminaison(JFrame cadreAngryBalls)
 {
-window.addWindowListener(this);
+cadreAngryBalls.addWindowListener(this);
 }
 
 @Override
