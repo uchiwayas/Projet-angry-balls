@@ -32,7 +32,7 @@ public class MecaniqueDragAndDropListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		v = new Vecteur(10,10);
-	}
+	} 
 
 	@Override
 	public void mouseEntered(MouseEvent e) {		
