@@ -30,8 +30,10 @@ public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implem
 		// TODO Auto-generated method stub
 		if (PressIN)
 		{
-			X_precedent = this.getPosition().x;
-		    X_precedent = this.getPosition().y;
+			if (this.getPosition().x % 0.1 == 0) //contre les petits mouvements de souris
+				X_precedent = this.getPosition().x;
+			if (this.getPosition().y % 0.1 == 0) //contre les petits mouvements de souris
+				X_precedent = this.getPosition().y;
 		    updateLocation(e);
 		}
 	}
@@ -85,7 +87,8 @@ public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implem
 		{
 			updateLocation(e);
 			this.getAccélération().ajoute(new Vecteur(-this.getVitesse().x, -this.getVitesse().y)); //reset
-			this.getAccélération().ajoute(new Vecteur((this.getPosition().x - X_precedent)/200, (this.getPosition().y - Y_precedent)/100)); //ajout vitesse de souris
+			
+			this.getAccélération().ajoute(new Vecteur((this.getPosition().x - X_precedent)/100, (this.getPosition().y - Y_precedent)/100)); //ajout vitesse de souris
 			PressIN = false;
 		}
 	}
