@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import exodecorateur_angryballs.maladroit.modele.Objet;
-import mesmaths.mecanique.MecaniqueDragAndDropListener;
 import outilsvues.EcouteurTerminaison;
 
 import outilsvues.Outils;
@@ -33,8 +32,6 @@ public class CadreAngryBalls extends JFrame implements VueBillard {
 	public CadreAngryBalls(String titre, String message, Vector<Objet> billes) throws HeadlessException {
 		super(titre);
 		
-		MecaniqueDragAndDropListener s = new MecaniqueDragAndDropListener();
-		
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
 		this.ecouteurTerminaison = new EcouteurTerminaison(this);
 
@@ -56,7 +53,6 @@ public class CadreAngryBalls extends JFrame implements VueBillard {
 
 		this.billard = new Billard(billes);
 		this.add(this.billard);
-		this.billard.addMouseListener(s);
 
 		this.lancerBilles = new Button("lancer les billes");
 		this.bas.add(this.lancerBilles);
