@@ -3,28 +3,19 @@ package exodecorateur_angryballs.maladroit.modele;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.Vector;
 
 import exodecorateur_angryballs.maladroit.vues.CadreAngryBalls;
 import mesmaths.geometrie.base.Vecteur;
 
-public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implements MouseListener, MouseMotionListener {
+public class ObjetAvecEffetDragAndDrop extends ObjetSourisListener implements MouseListener, MouseMotionListener {
 	CadreAngryBalls cadre;
 	double preX, preY, X_precedent, Y_precedent;
 	boolean PressIN = false;
 
 	public ObjetAvecEffetDragAndDrop(CadreAngryBalls cadre, Objet o) {
-		super(o);
-		this.cadre = cadre;
-		cadre.getBillard().addMouseListener(this);
-		cadre.getBillard().addMouseMotionListener(this);
+		super(cadre, o);
 	}
 	
-	@Override
-	public void gestionAccélération(Vector<Objet> objets) {
-		ObjetOriginal.gestionAccélération(objets);		
-	}
-
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -38,30 +29,6 @@ public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implem
 		}
 	}
 
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println(e.getX());
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -70,12 +37,9 @@ public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implem
 	    preY = this.getPosition().y - e.getY();
 	    X_precedent = this.getPosition().x;
 	    Y_precedent = this.getPosition().y;
-		if (Math.sqrt(Math.pow(e.getX()-this.getPosition().x,2)+(Math.pow(e.getY()-this.getPosition().y,2))) < this.getRayon())
-		{
-			
+		if (Math.sqrt(Math.pow(e.getX()-this.getPosition().x,2)+(Math.pow(e.getY()-this.getPosition().y,2))) < this.getRayon()) {
 			updateLocation(e);
 			PressIN = true;
-			 
 		}
 	    
 	}
@@ -83,8 +47,7 @@ public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implem
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(PressIN)
-		{
+		if(PressIN) {
 			updateLocation(e);
 			this.getAccélération().ajoute(new Vecteur(-this.getVitesse().x, -this.getVitesse().y)); //reset
 			
@@ -93,11 +56,34 @@ public class ObjetAvecEffetDragAndDrop extends ObjetAvecEffetAcceleration implem
 		}
 	}
 	
-	public void updateLocation(MouseEvent e)
-	{
+	
+	public void updateLocation(MouseEvent e) {
 		this.getPosition().x = preX + e.getX();
 		this.getPosition().y = preY + e.getY();
 	}
 
-	
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
