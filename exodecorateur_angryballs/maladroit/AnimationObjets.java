@@ -50,7 +50,7 @@ public class AnimationObjets implements Runnable {
 				// les divisions par zéro
 
 				// System.err.println("deltaT = " + deltaT);
-				deltaT = 1;
+				deltaT = 5;
 
 				int i;
 				for (i = 0; i < objets.size(); ++i) // mise à jour de la liste

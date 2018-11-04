@@ -1,32 +1,16 @@
 package exodecorateur_angryballs.maladroit;
 
+import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *  ICI : IL N'Y A RIEN A CHANGER 
- *  
- *  */
-public class EcouteurBoutonLancer implements ActionListener
-{
-AnimationObjets animationBilles;
-
-
-
-/**
- * @param animationsBilles
+ * ICI : IL N'Y A RIEN A CHANGER
+ * 
  */
-public EcouteurBoutonLancer(AnimationObjets animationBilles)
-{
-this.animationBilles = animationBilles;
-}
-
-
-
-@Override
-public void actionPerformed(ActionEvent arg0)
-{
-this.animationBilles.lancerAnimation();
-}
-
+public class EcouteurBoutonLancer extends BoutonObservable {
+	
+	public EcouteurBoutonLancer(Button btn) {
+		super(btn);
+	}
 }
