@@ -1,5 +1,6 @@
 package exodecorateur_angryballs.maladroit;
 
+import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,16 +9,9 @@ import java.awt.event.ActionListener;
  * 
  */
 
-public class EcouteurBoutonArreter implements ActionListener {
-	AnimationObjets animationBilles;
+public class EcouteurBoutonArreter extends BoutonObservable {
 
-	public EcouteurBoutonArreter(AnimationObjets animationBilles) {
-		this.animationBilles = animationBilles;
+	public EcouteurBoutonArreter(Button btn) {
+		super(btn);
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		this.animationBilles.arrêterAnimation();
-	}
-
 }

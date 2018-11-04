@@ -4,9 +4,14 @@ import java.awt.Color;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
+
 import exodecorateur_angryballs.maladroit.modele.Bille;
+import exodecorateur_angryballs.maladroit.modele.BilleMvtNewtonArret;
+import exodecorateur_angryballs.maladroit.modele.BilleMvtNewtonFrottementRebond;
+import exodecorateur_angryballs.maladroit.modele.BilleMvtRUPasseMurailles;
 import exodecorateur_angryballs.maladroit.modele.Objet;
 import exodecorateur_angryballs.maladroit.modele.*;
+import exodecorateur_angryballs.maladroit.modele.BilleMvtPesanteurFrottementRebond;
 import exodecorateur_angryballs.maladroit.vues.CadreAngryBalls;
 
 /**
@@ -32,14 +37,14 @@ public class TestAngryBalls {
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements différents. Situation idéale pour mettre en place le DP Decorator",
 				billes);
-		
+
 		cadre.montrer(); // on rend visible la vue
 
 		// ------------- remplissage de la liste avec 4 billes
 		// -------------------------------
 
 		double xMax, yMax;
-		double vMax = 0.1;
+		double vMax = 0.5;
 		xMax = cadre.largeurBillard(); // abscisse maximal
 		yMax = cadre.hauteurBillard(); // ordonnée maximale
 
@@ -80,8 +85,8 @@ public class TestAngryBalls {
 		billes.add(new ObjetAvecEffetDragAndDrop(cadre, new ObjetAvecEffetRebond(new ObjetAvecEffetRU(new Bille(p0, rayon, v0, Color.red))))); // RU et rebond
 		billes.add(new ObjetAvecEffetFrottementVisqueux(new ObjetAvecEffetRebond(new ObjetAvecEffetPesanteur(new Bille(p1, rayon, v1, Color.yellow), new Vecteur(0, 0.001))))); //Pesanteur, rebond, frottement
 		billes.add(new ObjetAvecEffetFrottementVisqueux(new ObjetAvecEffetRebond(new ObjetAvecEffetNewton(new Bille(p2, rayon, v2, Color.green))))); //Newton, frottement, rebond
-		billes.add(new ObjetAvecEffetFranchissement(new ObjetAvecEffetRU(new Bille(p3, rayon, v3, Color.cyan)))); //RU et passe murailles
-		billes.add(new ObjetAvecEffetBloque(new ObjetAvecEffetNewton(new Bille(p4, rayon, v4, Color.black)))); //Newton et Arret
+		billes.add(new ObjetAvecEffetFranchissement(new ObjetAvecEffetRU(new Bille(p3, rayon, v3, Color.cyan)))); // RU et passe murailles
+		billes.add(new ObjetAvecEffetBloque(new ObjetAvecEffetNewton(new Bille(p4, rayon, v4, Color.black)))); // Newton et Arret
 
 		// ---------------------- ici finit la partie à changer
 		// -------------------------------------------------------------
@@ -89,25 +94,14 @@ public class TestAngryBalls {
 		System.out.println("billes = " + billes);
 
 		// -------------------- création de l'objet responsable de l'animation
-		// (c'est un thread séparé) -----------------------
+		// (c'est un thread séparé) ------------------------------------
 
 		AnimationObjets animationBilles = new AnimationObjets(billes, cadre);
 
 		// ----------------------- mise en place des écouteurs de boutons qui
-		// permettent de contrôler (un peu...) l'application -----------------
+		// permettent de contrôler l'application ------------------------
 
-		EcouteurBoutonLancer écouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
-		EcouteurBoutonArreter écouteurBoutonArrêter = new EcouteurBoutonArreter(animationBilles);
-
-		// ------------------------- activation des écouteurs des boutons et ça
-		// tourne tout seul ------------------------------
-
-		cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // maladroit
-																	// : à
-																	// changer
-		cadre.arrêterBilles.addActionListener(écouteurBoutonArrêter); // maladroit
-																		// : à
-																		// changer
+		ControllerAngryBalls controller = new ControllerAngryBalls(animationBilles, cadre); // Permet de relier la vue du cadre et l'animation
 
 	}
 
