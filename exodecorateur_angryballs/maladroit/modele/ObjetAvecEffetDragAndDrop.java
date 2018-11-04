@@ -8,7 +8,6 @@ import exodecorateur_angryballs.maladroit.vues.CadreAngryBalls;
 import mesmaths.geometrie.base.Vecteur;
 
 public class ObjetAvecEffetDragAndDrop extends ObjetSourisListener implements MouseListener, MouseMotionListener {
-	CadreAngryBalls cadre;
 	double preX, preY, X_precedent, Y_precedent;
 	boolean PressIN = false;
 
