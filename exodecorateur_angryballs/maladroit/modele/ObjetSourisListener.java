@@ -18,7 +18,7 @@ public abstract class ObjetSourisListener extends ObjetAvecEffetAcceleration imp
 	
 	@Override
 	public void gestionAccélération(Vector<Objet> objets) {
-		ObjetOriginal.gestionAccélération(objets);		
+		ObjetOriginal.gestionAccélération(objets);
 	}
 
 }
