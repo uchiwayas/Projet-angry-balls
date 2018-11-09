@@ -245,7 +245,7 @@ return false;
  * si retourne true, modifie les vecteurs vitesse v1 et v2
  */
 public static boolean CollisionObjetObjet( final Vecteur G1, double rayon1, Vecteur v1, double m1, 
-                                           final Vecteur G2, double rayon2, Vecteur v2, double m2)   
+                                           final Vecteur G2, double rayon2, Vecteur v2, double m2, double width)   
 //modifie b1 et b2
 //données : b1 et b2 avant le choc
 //résultats : b1 et b2 après le choc
@@ -270,8 +270,18 @@ v2N = v2.produitScalaire(N);
 
 double a = v1N - v2N;
 
+// DEBUT SON
+//point de collision selon le rayon des objets
+Vecteur pcol1 = new Vecteur(G1.x, G1.y);
+Vecteur pcol2 = new Vecteur(G2.x, G2.y);
+pcol1 = pcol1.produit(rayon1);
+pcol2 = pcol2.produit(rayon2);
+Vecteur pointDeCollision = pcol1.somme(pcol2);
+pointDeCollision = pointDeCollision.produit(1/(rayon1+rayon2));
+
 Son son = new Son();
-Son.sonCollision(a, G1);
+Son.sonCollision(a, pointDeCollision, width);
+// FIN SON
    
 if (a <= 0) return false;       // les billes séloignent l'une de l'autre, la collision a donc déjà été traitée
 

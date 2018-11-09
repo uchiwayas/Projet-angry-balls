@@ -60,7 +60,7 @@ public class AnimationObjets implements Runnable {
 					objetCourant = objets.get(i);
 					objetCourant.déplacer(deltaT); // mise à jour position et vitesse de cette objet
 					objetCourant.gestionAccélération(objets); // calcul de l'accélération subie par cette objet
-					objetCourant.gestionCollisionObjetObjet(objets);
+					objetCourant.gestionCollisionObjetObjet(objets, vueBillard.largeurBillard());
 					objetCourant.collisionContour(0, 0, vueBillard.largeurBillard(), vueBillard.hauteurBillard()); // System.err.println("objets = " + objets);
 				}
 

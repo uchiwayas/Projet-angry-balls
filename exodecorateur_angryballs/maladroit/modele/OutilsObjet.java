@@ -60,7 +60,7 @@ public class OutilsObjet {
 	 *         renvoie false, il n'y a pas de collision et les objets sont
 	 *         laissées intactes
 	 */
-	public static boolean gestionCollisionObjetObjet(Objet cetObjet, Vector<Objet> Objets) {
+	public static boolean gestionCollisionObjetObjet(Objet cetObjet, Vector<Objet> Objets, double width) {
 		// --- on récupère d'abord dans autresObjets toutes les objets sauf
 		// cetteObjet ----
 
@@ -79,7 +79,7 @@ public class OutilsObjet {
 			objetCourant = autresObjets.get(i);
 			if (Collisions.CollisionObjetObjet(cetObjet.getPosition(), cetObjet.getRayon(), cetObjet.getVitesse(),
 					cetObjet.masse(), objetCourant.getPosition(), objetCourant.getRayon(), objetCourant.getVitesse(),
-					objetCourant.masse()))
+					objetCourant.masse(), width))
 				return true;
 		}
 		return false;

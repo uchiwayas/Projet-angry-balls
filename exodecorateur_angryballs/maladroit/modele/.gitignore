@@ -20,3 +20,6 @@
 /ObjetAvecEffetGrab.class
 /ObjetAvecEffetDragAndDrop.class
 /ObjetSourisListener.class
+/DefaultState.class
+/ObjetState.class
+/PressedState.class

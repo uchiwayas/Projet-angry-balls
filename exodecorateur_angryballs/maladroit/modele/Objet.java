@@ -20,8 +20,8 @@ public abstract class Objet {
 	 *         renvoie false, il n'y a pas de collision et les billes sont
 	 *         laissées intactes
 	 */	
-	public boolean gestionCollisionObjetObjet(Vector<Objet> objets) {
-		return OutilsObjet.gestionCollisionObjetObjet(this, objets);
+	public boolean gestionCollisionObjetObjet(Vector<Objet> objets, double width) {
+		return OutilsObjet.gestionCollisionObjetObjet(this, objets, width);
 	}
 	
 	public abstract int getClef();
