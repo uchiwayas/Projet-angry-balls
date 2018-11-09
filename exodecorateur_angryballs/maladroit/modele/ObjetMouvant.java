@@ -8,5 +8,5 @@ public abstract class ObjetMouvant extends Objet {
 	public  Vecteur vitesse;
 	public  Vecteur accélération;
 	public int clef; 
-
+	
 }

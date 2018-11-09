@@ -20,6 +20,7 @@ public class AnimationObjets implements Runnable {
 	private Thread thread; // pour lancer et arrêter les objets
 
 	private static final double COEFF = 0.5;
+	public static final int DELTA = 1;
 
 	/**
 	 * @param objets
@@ -50,7 +51,7 @@ public class AnimationObjets implements Runnable {
 				// les divisions par zéro
 
 				// System.err.println("deltaT = " + deltaT);
-				deltaT = 1;
+				deltaT = DELTA;
 
 				int i;
 				for (i = 0; i < objets.size(); ++i) // mise à jour de la liste

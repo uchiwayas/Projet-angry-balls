@@ -32,7 +32,7 @@ public class CadreAngryBalls extends JFrame implements VueBillard {
 	public CadreAngryBalls(String titre, String message, Vector<Objet> billes) throws HeadlessException {
 		super(titre);
 		
-		setResizable(false);
+		//setResizable(false);
 		
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
 		this.ecouteurTerminaison = new EcouteurTerminaison(this);

@@ -10,7 +10,6 @@ public class ControllerAngryBalls implements Observer {
 	
 	public AnimationObjets animation;
 	public CadreAngryBalls cadre;
-	public Vector<BoutonObservable> boutons;
 	
 	public ControllerAngryBalls(AnimationObjets animation, CadreAngryBalls cadre) {
 		this.animation = animation;
@@ -22,9 +21,6 @@ public class ControllerAngryBalls implements Observer {
 		
 		btnLancer.addObserver(this);
 		btnArreter.addObserver(this); 
-		
-		boutons.add(btnLancer);
-		boutons.add(btnArreter);
 	}
 
 	@Override
