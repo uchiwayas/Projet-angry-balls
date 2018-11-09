@@ -7,13 +7,11 @@ import mesmaths.geometrie.base.Vecteur;
 public class PressedState implements ObjetState {
 	
 
-	private static final double COEF_AMPLIFICATION = 5.0e-3;
+	private static final double COEF_AMPLIFICATION = 10.0e-6;
 
 	@Override
 	public void mouseDragged(MouseEvent e, ObjetAvecEffetDragAndDrop obj) {
-		obj.getVitesse().set(Vecteur.VECTEURNUL);
-		obj.getAccélération().set(Vecteur.VECTEURNUL);
-		obj.getAccélération().set(new Vecteur((-obj.getPosition().x + e.getX())*COEF_AMPLIFICATION, (-obj.getPosition().y + e.getY())*COEF_AMPLIFICATION));
+		accel(e, obj);
 	}
 
 	@Override
@@ -23,13 +21,10 @@ public class PressedState implements ObjetState {
 
 	@Override
 	public void mousePressed(MouseEvent e, ObjetAvecEffetDragAndDrop obj) {
-		System.out.println("x");
-		/*obj.getVitesse().set(Vecteur.VECTEURNUL);
-		obj.getAccélération().set(Vecteur.VECTEURNUL);*/
-		if (Math.sqrt(Math.pow(e.getX()-obj.getPosition().x,2)+(Math.pow(e.getY()-obj.getPosition().y,2))) < obj.getRayon()/2)
-			obj.getAccélération().set(new Vecteur((-obj.getPosition().x+ e.getX())*COEF_AMPLIFICATION, (-obj.getPosition().y + e.getY())*COEF_AMPLIFICATION));
-		/*le jour de la soutenance*/
+		accel(e, obj);
 	}
 	
-	//if (u.difference(obj.getPosition()).normeCarrée < rayon * rayon)
+	public void accel(MouseEvent e, ObjetAvecEffetDragAndDrop obj) {
+		obj.getAccélération().ajoute(new Vecteur((-obj.getPosition().x+ e.getX())*COEF_AMPLIFICATION, (-obj.getPosition().y + e.getY())*COEF_AMPLIFICATION));
+	}
 }

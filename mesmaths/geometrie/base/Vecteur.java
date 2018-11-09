@@ -275,4 +275,8 @@ public Vecteur produitSpecial(Vecteur v)
 return new Vecteur(x*v.x, y*v.y);
 }
 
+public double distanceCarre(Vecteur a) {
+	return (a.x-this.x)*(a.x-this.x) + (a.y-this.y)*(a.y-this.y);
+}
+
 }

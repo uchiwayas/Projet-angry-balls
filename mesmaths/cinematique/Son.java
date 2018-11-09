@@ -30,7 +30,6 @@ public class Son {
 			//BALANCE
 			float ratio = (float) (- 1 + (2*(pointDeCollision.x / width)));
 			balance.setValue(ratio);
-			System.out.println(ratio);
 			
 			//VOLUME
 			if(a>=0 && a<1) {

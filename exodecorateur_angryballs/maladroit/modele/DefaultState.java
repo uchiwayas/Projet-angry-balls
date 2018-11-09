@@ -2,6 +2,8 @@ package exodecorateur_angryballs.maladroit.modele;
 
 import java.awt.event.MouseEvent;
 
+import mesmaths.geometrie.base.Vecteur;
+
 public class DefaultState implements ObjetState {
 
 	@Override
@@ -14,10 +16,10 @@ public class DefaultState implements ObjetState {
 
 	@Override
 	public void mousePressed(MouseEvent e, ObjetAvecEffetDragAndDrop obj) {
-		if (Math.sqrt(Math.pow(e.getX()-obj.getPosition().x,2)+(Math.pow(e.getY()-obj.getPosition().y,2))) < obj.getRayon()) {
+		Vecteur mousePos = new Vecteur(e.getX(), e.getY());
+		if (mousePos.distanceCarre(obj.getPosition()) < obj.getRayon()* obj.getRayon()) {
 			obj.setState(new PressedState());
 			obj.mousePressed(e);
-			
 		}
 	}
 }
