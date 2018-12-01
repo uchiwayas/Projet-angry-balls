@@ -7,7 +7,7 @@ import mesmaths.geometrie.base.Vecteur;
 public class PressedState implements ObjetState {
 	
 
-	private static final double COEF_AMPLIFICATION = 10.0e-6;
+	private static final double COEF_AMPLIFICATION = 20.0e-6;
 
 	@Override
 	public void mouseDragged(MouseEvent e, ObjetAvecEffetDragAndDrop obj) {

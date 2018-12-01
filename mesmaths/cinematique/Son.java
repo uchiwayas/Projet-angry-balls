@@ -12,41 +12,59 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import mesmaths.geometrie.base.Vecteur;
 
-public class Son {
+public final class Son {
 	public static int ATTENUATION=50; //1 : meme volume quelque soit le choc, plus ca augmente plus la différence de volume est importante (max recommendé: 80)
+	public static File SON_COLLISION = new File("Sons/SonChoc.wav");
 	
-	public static void sonCollision(double a, Vecteur pointDeCollision, double width){
-		try {
-			File file = new File("Sons/SonChoc.wav");
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-			
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			
-			//intensité du choc
-			FloatControl balance = (FloatControl) clip.getControl(FloatControl.Type.BALANCE);
-			FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			
+	public static void sonCollisionObjetObjet(double a, Vecteur pointDeCollision, double width){
+		
+			boolean start = true;
 			//BALANCE
 			float ratio = (float) (- 1 + (2*(pointDeCollision.x / width)));
-			balance.setValue(ratio);
 			
 			//VOLUME
+			double vol=0;
+			System.out.println("a = "+ a);
 			if(a>=0 && a<1) {
-				double vol = -(1-a)*ATTENUATION;
+				vol = -(1-a)*ATTENUATION;
 				if (vol < -80) vol = -80;
-	        	volume.setValue((float) (vol));
 			}
-			if(a>0.1) //petit bricolage pour arreter le son si deux billes spawn l'une dans l'autre
+			if(a<0.1) //petit bricolage pour arreter le son si deux billes spawn l'une dans l'autre
+				start = false;
+
+			sonCollision((float)vol, ratio, start);
+	}
+	
+	public static void sonCollisionObjetContour(Vecteur vitesse, double xCollision){
+	
+	}
+	
+	public static void sonCollision(float volume, float ratio, boolean start){
+		if (start){
+			try {
+				System.out.println(volume);
+				File file = SON_COLLISION;
+				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+				
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+				
+				//droite ou gauche
+				FloatControl balance = (FloatControl) clip.getControl(FloatControl.Type.BALANCE);
+				balance.setValue(ratio);
+				//intensité du choc
+				FloatControl vol = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+				vol.setValue(volume);
+				
 				clip.start();
 			
-			
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
+			} catch (UnsupportedAudioFileException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

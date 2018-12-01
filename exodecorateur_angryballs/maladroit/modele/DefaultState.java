@@ -17,7 +17,7 @@ public class DefaultState implements ObjetState {
 	@Override
 	public void mousePressed(MouseEvent e, ObjetAvecEffetDragAndDrop obj) {
 		Vecteur mousePos = new Vecteur(e.getX(), e.getY());
-		if (mousePos.distanceCarre(obj.getPosition()) < obj.getRayon()* obj.getRayon()) {
+		if (mousePos.distanceCarre(obj.getPosition()) <= obj.getRayon()* obj.getRayon()) {
 			obj.setState(new PressedState());
 			obj.mousePressed(e);
 		}
