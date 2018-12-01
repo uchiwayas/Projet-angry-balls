@@ -18,31 +18,36 @@ public final class Son {
 	
 	public static void sonCollisionObjetObjet(double a, Vecteur pointDeCollision, double width){
 		
-			boolean start = true;
-			//BALANCE
-			float ratio = (float) (- 1 + (2*(pointDeCollision.x / width)));
-			
-			//VOLUME
-			double vol=0;
-			System.out.println("a = "+ a);
-			if(a>=0 && a<1) {
-				vol = -(1-a)*ATTENUATION;
-				if (vol < -80) vol = -80;
-			}
-			if(a<0.1) //petit bricolage pour arreter le son si deux billes spawn l'une dans l'autre
-				start = false;
+		boolean start = true;
+		//BALANCE
+		float ratio = (float) (- 1 + (2*(pointDeCollision.x / width)));
+		
+		//VOLUME
+		double vol=0;
+		if(a>=0 && a<1) {
+			vol = -(1-a)*ATTENUATION;
+		}
+		if(a<0.1) //petit bricolage pour arreter le son si deux billes spawn l'une dans l'autre
+			start = false;
 
-			sonCollision((float)vol, ratio, start);
+		sonCollision((float)vol, ratio, start);
 	}
 	
-	public static void sonCollisionObjetContour(Vecteur vitesse, double xCollision){
-	
+	public static void sonCollisionObjetContour(double choc, double xCollision, double width){
+		
+		//BALANCE
+		float ratio = (float) (- 1 + (2*(xCollision / width)));
+		
+		//VOLUME
+		double vol=0;
+		vol = -(1-Math.abs(choc))*ATTENUATION;
+		
+		sonCollision((float)vol, ratio, true);
 	}
 	
 	public static void sonCollision(float volume, float ratio, boolean start){
 		if (start){
 			try {
-				System.out.println(volume);
 				File file = SON_COLLISION;
 				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
 				
@@ -53,8 +58,11 @@ public final class Son {
 				FloatControl balance = (FloatControl) clip.getControl(FloatControl.Type.BALANCE);
 				balance.setValue(ratio);
 				//intensité du choc
+				float temp = volume;
+				if (temp < -80) temp = -80;
+				if (temp > 6) temp = 6;
 				FloatControl vol = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-				vol.setValue(volume);
+				vol.setValue(temp);
 				
 				clip.start();
 			

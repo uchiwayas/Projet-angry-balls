@@ -161,9 +161,8 @@ public class Collisions {
 	 * 
 	 */
 	public static boolean collisionBilleSegmentAvecRebond(final Vecteur position, double rayon, Vecteur vitesse,
-			final Vecteur P0, final Vecteur P1) {
-		System.out.println("P0 = ("+ P0.x +", "+ P0.y + ")");
-		System.out.println("P1 = ("+ P1.x +", "+ P1.y + ")");
+			final Vecteur P0, final Vecteur P1,double largeur) {
+		
 		Vecteur[] base = Geop.base(P0, P1);
 		// Vecteur I = base[0];
 		Vecteur N = base[1];
@@ -187,11 +186,17 @@ public class Collisions {
 		Vecteur deltaV = N.produit(-2 * vN); // calcul du changement de
 												// trajectoire
 		
-		double xCollision;
-		//Son.sonCollision(vitesse, xCollision);
+		double xCollision = position.x;
+		
+		//if (P0 == new Vecteur(0,0) || P0 == new Vecteur(largeur, largeur)) 
+		double choc;
+		if (position.x > rayon && position.x < largeur-rayon)
+			choc = vitesse.y;
+		else choc = vitesse.x;
+		Son.sonCollisionObjetContour(choc, xCollision, largeur);
 		
 		vitesse.ajoute(deltaV); // la bille rebondit
-
+		
 		return true;
 
 	} // collisionBilleSegmentAvecRebond
@@ -253,7 +258,7 @@ public class Collisions {
 
 		int i;
 		for (i = 1; i < coins.length; ++i)
-			if (Collisions.collisionBilleSegmentAvecRebond(position, rayon, vitesse, coins[i - 1], coins[i]))
+			if (Collisions.collisionBilleSegmentAvecRebond(position, rayon, vitesse, coins[i - 1], coins[i], largeur))
 				return true;
 
 		return false;
